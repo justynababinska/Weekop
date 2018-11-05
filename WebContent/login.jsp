@@ -39,7 +39,6 @@
 		</div>
 	</div>
 
-
 	<footer class="footer">
 		<div class="container">
 			<p class="navbar-text"> Weekop - developed by Justyna Babińska during <a href="http://javastart.pl">JavaStart.pl</a></p>

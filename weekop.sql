@@ -89,9 +89,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `weekop`.`user_role` (
   `role_name` VARCHAR(45) NOT NULL,
-  `user_id` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`role_name`, `user_id`),
-  INDEX `fk_role_has_user_user1_idx` (`user_id` ASC) VISIBLE,
+  `username` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`role_name`, `username`),
+  INDEX `fk_role_has_user_user1_idx` (`username` ASC) VISIBLE,
   INDEX `fk_role_has_user_role1_idx` (`role_name` ASC) VISIBLE,
   CONSTRAINT `fk_role_has_user_role1`
     FOREIGN KEY (`role_name`)
@@ -99,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `weekop`.`user_role` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_role_has_user_user1`
-    FOREIGN KEY (`user_id`)
+    FOREIGN KEY (`username`)
     REFERENCES `weekop`.`user` (`username`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
