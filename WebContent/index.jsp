@@ -24,10 +24,10 @@
 				<li><a href="add"><span class="glyphicon glyphicon-plus"></span> Dodaj</a></li>
 				<c:choose>
             		<c:when test="${not empty sessionScope.user}">
-            			<li><a href="logout">Wyloguj się</a></li>
+            			<li><a href="logout"><span class="glyphicon glyphicon-log-out"></span>Wyloguj się</a></li>
             		</c:when>
             		<c:otherwise>
-            			<li><a href="login"><span class="glyphicon glyphicon-user"></span> Zaloguj</a></li>
+            			<li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Zaloguj</a></li>
             	</c:otherwise>
             </c:choose>
 			

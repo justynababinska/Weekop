@@ -7,7 +7,7 @@ public abstract class DAOFactory {
 
 	public abstract UserDAO getUserDAO();
 
-	public abstract DiscoverDAO getDiscoveryDAO();
+	public abstract DiscoveryDAO getDiscoveryDAO();
 
 	public abstract VoteDAO getVoteDAO();
 

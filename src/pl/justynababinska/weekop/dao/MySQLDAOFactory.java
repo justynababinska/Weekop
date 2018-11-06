@@ -8,8 +8,8 @@ public class MySQLDAOFactory extends DAOFactory{
 	}
 
 	@Override
-	public DiscoverDAO getDiscoveryDAO() {
-		return new MySQLDiscoverDAO();
+	public DiscoveryDAO getDiscoveryDAO() {
+		return new MySQLDiscoveryDAO();
 	}
 
 	@Override

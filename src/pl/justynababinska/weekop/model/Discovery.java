@@ -21,6 +21,7 @@ public class Discovery {
 		url = discovery.getUrl();
 		description = discovery.getDescription();
 		timestamp = discovery.getTimestamp();
+		user = discovery.getUser();
 		upVote = discovery.getUpVote();
 		downVote = discovery.getDownVote();
 	}
@@ -91,7 +92,7 @@ public class Discovery {
 
 	@Override
 	public String toString() {
-		return "Discovery[id:" + ", title" + title + ", url:" + url + ", description:" + description + ", timestamp:"
+		return "Discovery[id:" + ", title:" + title + ", url:" + url + ", description:" + description + ", timestamp:"
 				+ timestamp + ", user:" + user + ", upVote" + upVote + "downVote:" + downVote + "]";
 	}
 

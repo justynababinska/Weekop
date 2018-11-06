@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,14 +16,21 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<a class="navbar-brand" href="#">Weekop</a>
-			<button class="navbar-toggle" data-toggle="collapse"
-				data-target=".navHeaderCollapse">
+			<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
 				<span class="glyphicon glyphicon-list"></span>
 			</button>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> Główna</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-plus"></span> Dodaj</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Zaloguj</a></li>
+				<li><a href="add"><span class="glyphicon glyphicon-plus"></span> Dodaj</a></li>
+				<c:choose>
+            		<c:when test="${not empty sessionScope.user}">
+            			<li><a href="logout"><span class="glyphicon glyphicon-log-out"></span>Wyloguj się</a></li>
+            		</c:when>
+            		<c:otherwise>
+            			<li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Zaloguj</a></li>
+            	</c:otherwise>
+            </c:choose>
+			
 			</ul>
 		</div>
 	</nav>
@@ -34,7 +42,7 @@
 				<input type="text" name="j_username" class="form-control" placeholder="Nazwa użytkownika" required autofocus>
 			    <input type="password" name="j_password" class="form-control" placeholder="Hasło" required autofocus>
 				<button class="btn btn-lg btn-primary btn-block" type="submit">Zaloguj</button>
-				<a href="#"> Zarejestruj</a>
+				<a href="register"> Zarejestruj</a>
 			</form>
 		</div>
 	</div>
