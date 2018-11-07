@@ -49,31 +49,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `weekop`.`vote`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `weekop`.`vote` (
-  `vote_id` INT NOT NULL AUTO_INCREMENT,
-  `discovery_id` INT NOT NULL,
-  `user_id` INT NOT NULL,
-  `date` TIMESTAMP NOT NULL,
-  `type` VARCHAR(45) NULL,
-  PRIMARY KEY (`vote_id`, `discovery_id`, `user_id`),
-  INDEX `fk_user_has_discovery_discovery1_idx` (`discovery_id` ASC, `user_id` ASC) VISIBLE,
-  INDEX `fk_user_has_discovery_user_idx` (`vote_id` ASC) VISIBLE,
-  CONSTRAINT `fk_user_has_discovery_user`
-    FOREIGN KEY (`vote_id`)
-    REFERENCES `weekop`.`user` (`user_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_user_has_discovery_discovery1`
-    FOREIGN KEY (`discovery_id` , `user_id`)
-    REFERENCES `weekop`.`discovery` (`discovery_id` , `user_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `weekop`.`role`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `weekop`.`role` (
@@ -88,7 +63,7 @@ ENGINE = InnoDB;
 -- Table `weekop`.`user_role`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `weekop`.`user_role` (
-  `role_name` VARCHAR(45) NOT NULL,
+  `role_name` VARCHAR(45) NOT NULL DEFAULT 'user',
   `username` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`role_name`, `username`),
   INDEX `fk_role_has_user_user1_idx` (`username` ASC) VISIBLE,
@@ -101,6 +76,31 @@ CREATE TABLE IF NOT EXISTS `weekop`.`user_role` (
   CONSTRAINT `fk_role_has_user_user1`
     FOREIGN KEY (`username`)
     REFERENCES `weekop`.`user` (`username`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `weekop`.`vote`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `weekop`.`vote` (
+  `vote_id` INT NOT NULL AUTO_INCREMENT,
+  `discovery_id` INT NOT NULL,
+  `user_id` INT NOT NULL,
+  `date` TIMESTAMP NOT NULL,
+  `type` VARCHAR(30) NOT NULL,
+  PRIMARY KEY (`vote_id`, `discovery_id`, `user_id`),
+  INDEX `fk_user_has_discovery_discovery1_idx` (`discovery_id` ASC) VISIBLE,
+  INDEX `fk_user_has_discovery_user1_idx` (`user_id` ASC) VISIBLE,
+  CONSTRAINT `fk_user_has_discovery_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `weekop`.`user` (`user_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_user_has_discovery_discovery1`
+    FOREIGN KEY (`discovery_id`)
+    REFERENCES `weekop`.`discovery` (`discovery_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

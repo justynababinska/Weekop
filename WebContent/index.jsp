@@ -45,9 +45,9 @@
 				<div class="row bs-callout bs-callout-info">
 
 					<div class="col col-md-1 col-sm-2">
-						<a href="#" class="btn btn-block btn-lg btn-success"><span class="glyphicon glyphicon-arrow-up"></span> </a>
-						<div class="well well-sm centered">12</div>
-						<a href="#" class="btn btn-block btn-lg btn-danger"><span class="glyphicon glyphicon-arrow-down"></span> </a>
+						<a href="${pageContext.request.contextPath}/vote?discovery_id=${discovery.id}&vote=VOTE_UP" class="btn btn-block btn-lg btn-success"><span class="glyphicon glyphicon-arrow-up"></span> </a>
+						<div class="well well-sm centered"><c:out value="${discovery.upVote - discovery.downVote}" /></div>
+						<a href="${pageContext.request.contextPath}/vote?discovery_id=${discovery.id}&vote=VOTE_DOWN" class="btn btn-block btn-lg btn-danger"><span class="glyphicon glyphicon-arrow-down"></span> </a>
 					</div>
 
 					<div class="col col-md-11 col-sm-10">
