@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,82 +17,54 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<a class="navbar-brand" href="#">Weekop</a>
+
 			<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
 				<span class="glyphicon glyphicon-list"></span>
 			</button>
-			<ul class="nav navbar-nav navbar-right">
-				<li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> Główna</a></li>
-				<li><a href="add"><span class="glyphicon glyphicon-plus"></span> Dodaj</a></li>
-				<c:choose>
-            		<c:when test="${not empty sessionScope.user}">
-            			<li><a href="logout"><span class="glyphicon glyphicon-log-out"></span>Wyloguj się</a></li>
-            		</c:when>
-            		<c:otherwise>
-            			<li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Zaloguj</a></li>
-            	</c:otherwise>
-            </c:choose>
-			
-			</ul>
+
+			<div class="collapse navbar-collapse navHeaderCollapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active"><a href=""><span class="glyphicon glyphicon-home"></span> Główna</a></li>
+					<li><a href="${pageContext.request.contextPath}/add"><span class="glyphicon glyphicon-plus"></span> Dodaj</a></li>
+					<c:choose>
+						<c:when test="${not empty sessionScope.user}">
+							<li><a href="${pageContext.request.contextPath}/logout"><span class="glyphicon glyphicon-log-out"></span>Wyloguj się</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="${pageContext.request.contextPath}/login"><span class="glyphicon glyphicon-log-in"></span> Zaloguj</a></li>
+						</c:otherwise>
+					</c:choose>
+				</ul>
+			</div>
 		</div>
 	</nav>
 
+	<c:if test="${not empty requestScope.discoveries}">
+		<c:forEach var="discovery" items="${requestScope.discoveries}">
+			<div class="container">
+				<div class="row bs-callout bs-callout-info">
 
-	<div class="container">
-		<div class="row bs-callout bs-callout-info">
+					<div class="col col-md-1 col-sm-2">
+						<a href="#" class="btn btn-block btn-lg btn-success"><span class="glyphicon glyphicon-arrow-up"></span> </a>
+						<div class="well well-sm centered">12</div>
+						<a href="#" class="btn btn-block btn-lg btn-danger"><span class="glyphicon glyphicon-arrow-down"></span> </a>
+					</div>
 
-			<div class="col col-md-1 col-sm-2">
-				<a href="#" class="btn btn-block btn-lg btn-success"><span class="glyphicon glyphicon-arrow-up"></span> </a>
-				<div class="well well-sm centered">12</div>
-				<a href="#" class="btn btn-block btn-lg btn-danger"><span class="glyphicon glyphicon-arrow-down"></span> </a>
+					<div class="col col-md-11 col-sm-10">
+						<h3 class="centered"><a href="<c:out value="${discovery.url}"/>"> <c:out value="${discovery.title}" /></a></h3>
+						<h6><small>Dodane przez: <c:out value="${discovery.user.username}" />, Dnia: <fmt:formatDate value="${discovery.timestamp}" pattern="dd/MM/YYYY" /></small></h6>
+						<p><c:out value="${discovery.description}" /></p>
+						<a href="<c:out value="${discovery.url}"/>" class="btn btn-default btn-xs">Przejdź do strony</a>
+					</div>
+
+				</div>
 			</div>
-
-			<div class="col col-md-11 col-sm-10">
-				<h3 class="centered"><a href="#">Znalezisko</a></h3>
-				<h6><small>Dodane przez: Justyna, Dnia: 02 listopad 2018</small>
-				</h6><p>Opis...</p>
-				<a class="btn btn-default btn-xs">Przejdź do strony</a>
-			</div>
-
-		</div>
-
-		<div class="row bs-callout bs-callout-info">
-
-			<div class="col col-md-1 col-sm-2">
-				<a href="#" class="btn btn-block btn-lg btn-success"><span class="glyphicon glyphicon-arrow-up"></span> </a>
-				<div class="well well-sm centered">12</div>
-				<a href="#" class="btn btn-block btn-lg btn-danger"><span class="glyphicon glyphicon-arrow-down"></span> </a>
-			</div>
-
-			<div class="col col-md-11 col-sm-10">
-				<h3 class="centered"> <a href="#">Znalezisko</a></h3>
-				<h6><small>Dodane przez: Justyna, Dnia: 02 listopad 2018</small></h6>
-				<p>Opis...</p>
-				<a class="btn btn-default btn-xs">Przejdź do strony</a>
-			</div>
-
-		</div>
-
-		<div class="row bs-callout bs-callout-info">
-
-			<div class="col col-md-1 col-sm-2">
-				<a href="#" class="btn btn-block btn-lg btn-success"><span class="glyphicon glyphicon-arrow-up"></span> </a>
-				<div class="well well-sm centered">12</div>
-				<a href="#" class="btn btn-block btn-lg btn-danger"><span class="glyphicon glyphicon-arrow-down"></span> </a>
-			</div>
-
-			<div class="col col-md-11 col-sm-10">
-				<h3 class="centered"><a href="#">Znalezisko</a></h3>
-				<h6><small>Dodane przez: Justyna, Dnia: 02 listopad 2018</small></h6>
-				<p>Opis...</p>
-				<a class="btn btn-default btn-xs">Przejdź do strony</a>
-			</div>
-
-		</div>
-	</div>
+		</c:forEach>
+	</c:if>
 
 	<footer class="footer">
 		<div class="container">
-			<p class="navbar-text">Weekop - developed by Justyna Babińska during <a href="http://javastart.pl">JavaStart.pl</a></p>
+			<p class="navbar-text"> Weekop - developed by Justyna Babińska during <a href="http://javastart.pl">JavaStart.pl</a></p>
 		</div>
 	</footer>
 
@@ -100,4 +73,3 @@
 	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 </body>
 </html>
-

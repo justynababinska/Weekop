@@ -1,12 +1,12 @@
 package pl.justynababinska.weekop.service;
 
 import java.sql.Timestamp;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 
 import pl.justynababinska.weekop.dao.DAOFactory;
 import pl.justynababinska.weekop.dao.DiscoveryDAO;
-import pl.justynababinska.weekop.dao.UserDAO;
-import pl.justynababinska.weekop.dao.VoteDAO;
 import pl.justynababinska.weekop.model.Discovery;
 import pl.justynababinska.weekop.model.User;
 
@@ -30,21 +30,17 @@ public class DiscoveryService {
 		return discovery;
 	}
 
-	@Override
-	public VoteDAO getVoteDAO() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Discovery> getAllDiscoveries() {
+		return getAllDiscoveries(null);
 	}
 
-	@Override
-	public UserDAO getUserDAO() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public DiscoveryDAO getDiscoveryDAO() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Discovery> getAllDiscoveries(Comparator<Discovery> comparator) {
+		DAOFactory factory = DAOFactory.getDAOFactory();
+		DiscoveryDAO discoveryDao = factory.getDiscoveryDAO();
+		List<Discovery> discoveries = discoveryDao.getAll();
+		if (comparator != null && discoveries != null) {
+			discoveries.sort(comparator);
+		}
+		return discoveries;
 	}
 }
