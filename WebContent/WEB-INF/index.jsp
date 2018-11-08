@@ -14,30 +14,7 @@
 
 <body>
 
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<a class="navbar-brand" href="#">Weekop</a>
-
-			<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
-				<span class="glyphicon glyphicon-list"></span>
-			</button>
-
-			<div class="collapse navbar-collapse navHeaderCollapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href=""><span class="glyphicon glyphicon-home"></span> Główna</a></li>
-					<li><a href="${pageContext.request.contextPath}/add"><span class="glyphicon glyphicon-plus"></span> Dodaj</a></li>
-					<c:choose>
-						<c:when test="${not empty sessionScope.user}">
-							<li><a href="${pageContext.request.contextPath}/logout"><span class="glyphicon glyphicon-log-out"></span>Wyloguj się</a></li>
-						</c:when>
-						<c:otherwise>
-							<li><a href="${pageContext.request.contextPath}/login"><span class="glyphicon glyphicon-log-in"></span> Zaloguj</a></li>
-						</c:otherwise>
-					</c:choose>
-				</ul>
-			</div>
-		</div>
-	</nav>
+  	<jsp:include page="fragment/navbar.jspf" />
 
 	<c:if test="${not empty requestScope.discoveries}">
 		<c:forEach var="discovery" items="${requestScope.discoveries}">
@@ -62,11 +39,7 @@
 		</c:forEach>
 	</c:if>
 
-	<footer class="footer">
-		<div class="container">
-			<p class="navbar-text"> Weekop - developed by Justyna Babińska during <a href="http://javastart.pl">JavaStart.pl</a></p>
-		</div>
-	</footer>
+    <jsp:include page="fragment/footer.jspf" />
 
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
