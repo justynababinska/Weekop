@@ -32,16 +32,16 @@ public class MySQLUserDAO implements UserDAO {
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		BeanPropertySqlParameterSource beanParamSource = new BeanPropertySqlParameterSource(user);
 		int i = template.update(CREATE, beanParamSource, keyHolder);
-		if (i > 1) {
-			resultUser.setId((Long) keyHolder.getKey());
-			setRole(user);
+		if (i > 0) {
+			resultUser.setId(keyHolder.getKey().longValue());
+			setRole(resultUser);
 
 		}
 		return resultUser;
 	}
 
 	private void setRole(User user) {
-		final String SET_ROLE = "INSER INTO user_role(username) VALUES(:username)";
+		final String SET_ROLE = "INSERT INTO user_role(username) VALUES(:username)";
 		BeanPropertySqlParameterSource beanParamSource = new BeanPropertySqlParameterSource(user);
 		template.update(SET_ROLE, beanParamSource);
 	}
