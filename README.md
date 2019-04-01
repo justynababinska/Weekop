@@ -15,8 +15,11 @@ Available functionalities:
 
 ## Screenshots
 ![screnshots](./Home.png)
+
 ![screnshots](./Register.png)
+
 ![screnshots](./Login.png)
+
 ![screnshots](./Add.png)
 
 ## Technologies
