@@ -14,7 +14,7 @@ Available functionalities:
 
 
 ## Screenshots
-![screnshots](./Homek.png)
+![screnshots](./Home.png)
 ![screnshots](./Register.png)
 ![screnshots](./Login.png)
 ![screnshots](./Add.png)
