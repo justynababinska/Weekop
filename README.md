@@ -8,7 +8,7 @@
 * [Status](#status)
 
 ## General info
-Application was created to improve knowledge through the training.
+The application was created to improve knowledge through the training.
 
 Available functionalities:
 Users have the opportunity to register and those who log in will be able to add "find".
