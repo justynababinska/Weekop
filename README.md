@@ -24,6 +24,7 @@ You can vote on finds, the ones with the highest number are displayed first in t
 ![screnshots](./Add.png)
 
 ## Technologies
+* JDK 9
 * JavaEE
 * Spring JDBC  - version 5.0.8
 * Bootstrap - version 3.3.7
