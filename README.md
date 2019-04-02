@@ -28,7 +28,7 @@ You can vote on finds, the ones with the highest number are displayed first in t
 * Spring JDBC  - version 5.0.8
 * Bootstrap - version 3.3.7
 * JSTL - version 1.2.5
-* Tomcat - version 9.0
+* Tomcat - version 9.0.14
 
 ## Status
 Project is: _finished_
